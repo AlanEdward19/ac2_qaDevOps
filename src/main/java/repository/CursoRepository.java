@@ -1,4 +1,4 @@
-﻿package repository;
+package repository;
 
 import entity.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
