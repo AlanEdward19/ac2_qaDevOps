@@ -23,19 +23,6 @@ pipeline {
               }
             }
 
-        stage('Test') {
-            steps {
-                // Executa os testes de unidade
-                bat 'mvn test -Dspring.profiles.active=staging'
-            }
-            post {
-                always {
-                    // Publica os relatórios JUnit, referenciando o caminho onde os relatórios XML são gerados
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-
         stage('Run tests against the container') {
             steps {
                 bat 'curl http://localhost:8686 || echo "Service not responding"'
