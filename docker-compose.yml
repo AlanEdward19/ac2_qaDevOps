@@ -1,0 +1,19 @@
+﻿version: '4'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: api
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+
+  api:
+    image: image no hub
+    networks:
+      - default  # Certifique-se de que está usando a rede adequada
+    environment:
+      DB_HOST: database
+    ports:
+      - "8686:8080"
