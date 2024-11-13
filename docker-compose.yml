@@ -10,10 +10,13 @@ services:
       - db-volume:/var/lib/postgresql/data
 
   api:
-    image: image no hub
+    image: conradosetti/ac2_ca:latest
     networks:
       - default  # Certifique-se de que está usando a rede adequada
     environment:
       DB_HOST: database
     ports:
       - "8686:8080"
+
+volumes:
+  db-volume:
