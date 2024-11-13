@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Executa os testes de unidade
-                bat 'mvn test -Dspring.profiles.active=staging'
+                bat 'mvn test -Dspring.profiles.active=production'
             }
             post {
                 always {
@@ -32,10 +32,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('Deploy to Production') {
             steps {
                 // Exemplo de deploy usando Docker
-                bat 'docker-compose -f docker-compose.yml up --build -d'
+                bat 'docker-compose -f docker-compose-production.yml up --build -d'
             }
         }
     }
