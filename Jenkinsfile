@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Faz o checkout do código-fonte do repositório
+                git 'https://github.com/AlanEdward19/ac2_qaDevOps.git'
                 checkout scm
             }
         }
