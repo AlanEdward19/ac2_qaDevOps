@@ -15,14 +15,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Executa o build da aplicação, por exemplo, para um projeto Maven
-                sh 'mvn clean package -DskipTests'
+                bat 'mvn clean package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
                 // Executa os testes de unidade
-                sh 'mvn test -Dspring.profiles.active=staging'
+                bat 'mvn test -Dspring.profiles.active=staging'
             }
             post {
                 always {
@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 // Exemplo de deploy usando Docker
-                sh 'docker-compose -f docker-compose.yml up --build -d'
+                bat 'docker-compose -f docker-compose.yml up --build -d'
             }
         }
     }
