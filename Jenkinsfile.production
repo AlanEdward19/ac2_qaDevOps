@@ -17,7 +17,7 @@ pipeline {
                         echo 'Starting container from Docker Hub...'
                         bat 'docker-compose -f docker-compose-production.yml pull' // Baixa a imagem do Docker Hub
                         bat 'docker-compose -f docker-compose-production.yml up -d --no-color'
-                        sleep time: 60, unit: 'SECONDS' // Aumenta o tempo para o serviço Spring Boot iniciar
+                        sleep time: 120, unit: 'SECONDS' // Aumenta o tempo para o serviço Spring Boot iniciar
                         bat 'docker-compose -f docker-compose-production.yml logs' // Verifica os logs para conferir o status do Spring Boot
                         bat 'docker-compose -f docker-compose-production.yml ps' // Verifica o status do container
                       }
