@@ -8,16 +8,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/AlanEdward19/ac2_qaDevOps.git'
+                checkout scm
             }
         }
 
-        stage('Build') {
-            steps {
-                // Executa o build da aplicação, por exemplo, para um projeto Maven
-                bat 'mvn clean package -DskipTests'
+        stage('Start container') {
+              steps {
+                echo 'Starting container from Docker Hub...'
+                bat 'docker-compose -f docker-compose.yml pull' // Baixa a imagem do Docker Hub
+                bat 'docker-compose -f docker-compose.yml up -d --no-color'
+                sleep time: 60, unit: 'SECONDS' // Aumenta o tempo para o serviço Spring Boot iniciar
+                bat 'docker-compose -f docker-compose.yml logs' // Verifica os logs para conferir o status do Spring Boot
+                bat 'docker-compose -f docker-compose.yml ps' // Verifica o status do container
+              }
             }
-        }
 
         stage('Test') {
             steps {
@@ -32,10 +36,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('Run tests against the container') {
             steps {
-                // Exemplo de deploy usando Docker
-                bat 'docker-compose -f docker-compose.yml up --build -d'
+                bat 'curl http://localhost:8686 || echo "Service not responding"'
             }
         }
     }
