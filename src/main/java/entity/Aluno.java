@@ -27,16 +27,16 @@ public class Aluno {
         return id;
     }
 
-    public EmailAluno getEmail() {
-        return email;
+    public String getEmail() {
+        return email.getEmailAddress();
     }
 
     public void setEmail(EmailAluno email) {
         this.email = email;
     }
 
-    public Nome getNome() {
-        return nome;
+    public String getNome() {
+        return nome.getnome();
     }
 
     public void setNome(Nome nome) {
