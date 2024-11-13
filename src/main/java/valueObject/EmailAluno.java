@@ -1,4 +1,4 @@
-package entity;
+package valueObject;
 
 import java.util.Objects;
 

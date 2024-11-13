@@ -1,4 +1,4 @@
-package entity;
+package valueObject;
 
 import jakarta.persistence.Embeddable;
 

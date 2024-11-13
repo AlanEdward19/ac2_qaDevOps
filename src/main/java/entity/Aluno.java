@@ -1,6 +1,8 @@
 package entity;
 
 import jakarta.persistence.*;
+import valueObject.EmailAluno;
+import valueObject.Nome;
 
 @Entity
 @Table(name = "tb_aluno")
