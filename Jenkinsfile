@@ -9,7 +9,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/AlanEdward19/ac2_qaDevOps.git'
-                checkout scm
             }
         }
 
