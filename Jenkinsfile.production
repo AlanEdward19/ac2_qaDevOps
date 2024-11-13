@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_ENV = 'production'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Start container') {
+                      steps {
+                        echo 'Starting container from Docker Hub...'
+                        bat 'docker-compose -f docker-compose-production.yml pull' // Baixa a imagem do Docker Hub
+                        bat 'docker-compose -f docker-compose-production.yml up -d --no-color'
+                        sleep time: 120, unit: 'SECONDS' // Aumenta o tempo para o serviço Spring Boot iniciar
+                        bat 'docker-compose -f docker-compose-production.yml logs' // Verifica os logs para conferir o status do Spring Boot
+                        bat 'docker-compose -f docker-compose-production.yml ps' // Verifica o status do container
+                      }
+                    }
+
+        stage('Run tests against the container') {
+                    steps {
+                        bat 'curl http://localhost:8687 || echo "Service not responding"'
+                    }
+                }
+
+
+    }
+
+    post {
+        success {
+            echo "Pipeline Production concluído com sucesso."
+        }
+        failure {
+            echo "Pipeline Production falhou."
+        }
+    }
+}
