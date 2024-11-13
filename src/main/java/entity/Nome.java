@@ -26,7 +26,7 @@ public class Nome {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Nome nome = (Nome) o;
-        return Objects.equals(nome, nome.nome);
+        return Objects.equals(this.nome, nome.nome);
     }
     @Override
     public int hashCode() {
