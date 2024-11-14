@@ -26,7 +26,7 @@ public class Descricao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Descricao descricao = (Descricao) o;
-        return Objects.equals(descricao, descricao.descricao);
+        return Objects.equals(this.descricao, descricao.descricao);
     }
     @Override
     public int hashCode() {
