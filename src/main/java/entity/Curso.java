@@ -1,6 +1,8 @@
 package entity;
 
 import jakarta.persistence.*;
+import valueObject.Descricao;
+import valueObject.Nome;
 
 @Entity
 @Table(name = "tb_curso")
@@ -15,16 +17,16 @@ public class Curso {
     @Embedded
     private Descricao descricao;
 
-    public Nome getNome() {
-        return nome;
+    public String getNome() {
+        return nome.getnome();
     }
 
     public void setNome(Nome nome) {
         this.nome = nome;
     }
 
-    public Descricao getDescricao() {
-        return descricao;
+    public String getDescricao() {
+        return descricao.getdescricao();
     }
 
     public void setDescricao(Descricao descricao) {

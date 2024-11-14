@@ -1,23 +1,23 @@
-package entity;
+package valueObject;
 
 import jakarta.persistence.Embeddable;
 
 import java.util.Objects;
 
 @Embeddable
-public class Nome {
+public class Descricao {
 
-    private String nome;
+    private String descricao;
 
     // Construtor padrão necessário para o JPA
-    protected Nome() {}
+    protected Descricao() {}
 
-    public Nome(String nome) {
-        this.nome = nome;
+    public Descricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getnome() {
-        return nome;
+    public String getdescricao() {
+        return descricao;
     }
 
     // Sobrescreva equals e hashCode para garantir comparação por valor
@@ -25,11 +25,11 @@ public class Nome {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nome nome = (Nome) o;
-        return Objects.equals(nome, nome.nome);
+        Descricao descricao = (Descricao) o;
+        return Objects.equals(this.descricao, descricao.descricao);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(nome);
+        return Objects.hash(descricao);
     }
 }
