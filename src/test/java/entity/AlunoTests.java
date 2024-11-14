@@ -3,6 +3,8 @@ package entity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import valueObject.EmailAluno;
+import valueObject.Nome;
 
 class AlunoTests {
 
@@ -34,24 +36,24 @@ class AlunoTests {
     @Test
     void SetNome_DeveDefinirONomeDoAluno() {
         aluno.setNome(nomeValido);
-        assertEquals(nomeValido, aluno.getNome(), "O nome do aluno deve ser igual ao valor definido.");
+        assertEquals(nomeValido.getnome(), aluno.getNome(), "O nome do aluno deve ser igual ao valor definido.");
     }
 
     @Test
     void GetNome_DeveRetornarONomeDoAluno() {
         aluno.setNome(nomeValido);
-        assertEquals(nomeValido, aluno.getNome(), "O nome do aluno deve ser igual ao valor retornado pelo getter.");
+        assertEquals(nomeValido.getnome(), aluno.getNome(), "O nome do aluno deve ser igual ao valor retornado pelo getter.");
     }
 
     @Test
     void SetEmail_DeveDefinirOEmailDoAluno() {
         aluno.setEmail(emailValido);
-        assertEquals(emailValido, aluno.getEmail(), "O email do aluno deve ser igual ao valor definido.");
+        assertEquals(emailValido.getEmailAddress(), aluno.getEmail(), "O email do aluno deve ser igual ao valor definido.");
     }
 
     @Test
     void GetEmail_DeveRetornarOEmailDoAluno() {
         aluno.setEmail(emailValido);
-        assertEquals(emailValido, aluno.getEmail(), "O email do aluno deve ser igual ao valor retornado pelo getter.");
+        assertEquals(emailValido.getEmailAddress(), aluno.getEmail(), "O email do aluno deve ser igual ao valor retornado pelo getter.");
     }
 }

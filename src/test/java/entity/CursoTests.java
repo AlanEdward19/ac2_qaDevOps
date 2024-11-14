@@ -3,6 +3,8 @@ package entity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import valueObject.Descricao;
+import valueObject.Nome;
 
 class CursoTests {
 
@@ -34,24 +36,24 @@ class CursoTests {
     @Test
     void SetNome_DeveDefinirONomeDoCurso() {
         curso.setNome(nomeValido);
-        assertEquals(nomeValido, curso.getNome(), "O nome do curso deve ser igual ao valor definido.");
+        assertEquals(nomeValido.getnome(), curso.getNome(), "O nome do curso deve ser igual ao valor definido.");
     }
 
     @Test
     void GetNome_DeveRetornarONomeDoCurso() {
         curso.setNome(nomeValido);
-        assertEquals(nomeValido, curso.getNome(), "O nome do curso deve ser igual ao valor retornado pelo getter.");
+        assertEquals(nomeValido.getnome(), curso.getNome(), "O nome do curso deve ser igual ao valor retornado pelo getter.");
     }
 
     @Test
     void SetDescricao_DeveDefinirADescricaoDoCurso() {
         curso.setDescricao(descricaoValida);
-        assertEquals(descricaoValida, curso.getDescricao(), "A descrição do curso deve ser igual ao valor definido.");
+        assertEquals(descricaoValida.getdescricao(), curso.getDescricao(), "A descrição do curso deve ser igual ao valor definido.");
     }
 
     @Test
     void GetDescricao_DeveRetornarADescricaoDoCurso() {
         curso.setDescricao(descricaoValida);
-        assertEquals(descricaoValida, curso.getDescricao(), "A descrição do curso deve ser igual ao valor retornado pelo getter.");
+        assertEquals(descricaoValida.getdescricao(), curso.getDescricao(), "A descrição do curso deve ser igual ao valor retornado pelo getter.");
     }
 }
