@@ -2,6 +2,7 @@ package service;
 
 import dto.AlunoDto;
 import entity.Aluno;
+import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.AlunoRepository;
@@ -18,9 +19,11 @@ public class AlunoService {
     private AlunoRepository alunoRepository;
 
     public List<AlunoDto> listarAlunos() {
-        return alunoRepository.findAll().stream()
+        var alunos = alunoRepository.findAll().stream()
                 .map(aluno -> new AlunoDto(aluno.getNome(), aluno.getEmail()))
                 .collect(Collectors.toList());
+
+        return alunos;
     }
 
     public void salvarAluno(AlunoDto alunoDto) {
