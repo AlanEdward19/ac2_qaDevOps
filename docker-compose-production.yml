@@ -14,7 +14,7 @@ services:
     environment:
       DB_HOST: postgres
     ports:
-      - "8687:8080"
+      - "8687:8081"
 
 volumes:
   db-volume:
